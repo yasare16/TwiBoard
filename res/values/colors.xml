@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="keyBackground">#222222</color>
+    <color name="textColor">#FEFEFE</color>
+    <color name="previewColor">#F2F2F2</color>
+    <color name="borderColor">#D5D5D5</color>
+    
+    <color name="candidate_recommended">#FFFFFF</color>
+    <color name="candidate_other">#FFFFFF</color>
+    <color name="candidate_normal">#FFFFFF</color>
+    <color name="candidate_background">#222222</color>
+    
+</resources>
