@@ -4,6 +4,8 @@
     android:keyHeight="@dimen/key_height"
     android:verticalGap="0.3%p"
     android:horizontalGap="0.5%p"
+    android:textStyle="bold"
+    android:typeface="monospace"
 >
     <Row android:rowEdgeFlags="top">
         <Key android:codes="49" android:keyLabel="1" android:keyEdgeFlags="left"/>
