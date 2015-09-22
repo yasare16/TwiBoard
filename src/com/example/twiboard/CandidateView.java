@@ -10,9 +10,11 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CandidateView extends View {
+	
     private static final int OUT_OF_BOUNDS = -1;
     private Twi_IME mService;
     private List<String> mSuggestions;
@@ -27,7 +29,7 @@ public class CandidateView extends View {
     
     private int[] mWordWidth = new int[MAX_SUGGESTIONS];
     private int[] mWordX = new int[MAX_SUGGESTIONS];
-    private static final int X_GAP = 20;
+    private static final int X_GAP = 100;
     
     private static final List<String> EMPTY_LIST = new ArrayList<String>();
     private int mColorNormal;
@@ -210,6 +212,9 @@ public class CandidateView extends View {
     public void setSuggestions(List<String> suggestions, boolean completions,
             boolean typedWordValid) {
         clear();
+        
+        suggestions = Arrays.asList("the", "this", "that", "then");
+        
         if (suggestions != null) {
             mSuggestions = new ArrayList<String>(suggestions);
         }
@@ -226,6 +231,11 @@ public class CandidateView extends View {
         mTouchX = OUT_OF_BOUNDS;
         mSelectedIndex = -1;
         invalidate();
+    }
+    
+    public String getSuggestion(int index)
+    {
+        return index >= 0 && mSuggestions != null && index < mSuggestions.size() ? mSuggestions.get(index) : "";
     }
     
     @Override
@@ -274,7 +284,7 @@ public class CandidateView extends View {
     public void takeSuggestionAt(float x) {
         mTouchX = (int) x;
         // To detect candidate
-        // onDraw(null);
+        //onDraw(null);
         if (mSelectedIndex >= 0) {
             mService.pickSuggestionManually(mSelectedIndex);
         }

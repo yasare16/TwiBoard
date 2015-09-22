@@ -645,6 +645,7 @@ public class Twi_IME extends InputMethodService
         pickSuggestionManually(0);
     }
     
+    
     public void pickSuggestionManually(int index) {
         if (mCompletionOn && mCompletions != null && index >= 0
                 && index < mCompletions.length) {
@@ -658,7 +659,14 @@ public class Twi_IME extends InputMethodService
             // If we were generating candidate suggestions for the current
             // text, we would commit one of them here.  But for this sample,
             // we will just commit the current text.
-            commitTyped(getCurrentInputConnection());
+            
+        	
+        	getCurrentInputConnection().commitText(
+                    mCandidateView.getSuggestion(index),
+                    mCandidateView.getSuggestion(index).length());
+        	commitTyped(getCurrentInputConnection());
+            mComposing.setLength(0);
+            updateCandidates();
         }
     }
     
