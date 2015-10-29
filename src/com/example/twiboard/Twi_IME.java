@@ -66,7 +66,7 @@ public class Twi_IME extends InputMethodService
     @Override public void onCreate() {
         super.onCreate();
         mInputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-        mWordSeparators = getResources().getString(R.string.word_separators);
+        mWordSeparators = getResources().getString(R.string.separator);
     }
     
     /**
@@ -97,12 +97,12 @@ public class Twi_IME extends InputMethodService
         mInputView = (TwiboardView) getLayoutInflater().inflate(
                 R.layout.keyboard, null);
         mInputView.setOnKeyboardActionListener(this);
-        setLatinKeyboard(mQwertyKeyboard);
+        setKeyboard(mQwertyKeyboard);
         return mInputView;
     }
-    private void setLatinKeyboard(TwiBoard nextKeyboard) {
-    //	final boolean shouldSupportLanguageSwitchKey =
-      //          mInputMethodManager.shouldOfferSwitchingToNextInputMethod(getToken());
+    private void setKeyboard(TwiBoard nextKeyboard) {
+    	final boolean shouldSupportLanguageSwitchKey =
+                mInputMethodManager.shouldOfferSwitchingToNextInputMethod(getToken());
       //  nextKeyboard.setLanguageSwitchKeyVisibility(shouldSupportLanguageSwitchKey);
         mInputView.setKeyboard(nextKeyboard);
     }
@@ -242,7 +242,7 @@ public class Twi_IME extends InputMethodService
     @Override public void onStartInputView(EditorInfo attribute, boolean restarting) {
         super.onStartInputView(attribute, restarting);
         // Apply the selected keyboard to the input view.
-        setLatinKeyboard(mCurKeyboard);
+        setKeyboard(mCurKeyboard);
         mInputView.closing();
         final InputMethodSubtype subtype = mInputMethodManager.getCurrentInputMethodSubtype();
         mInputView.setSubtypeOnSpaceKey(subtype);
@@ -503,9 +503,9 @@ public class Twi_IME extends InputMethodService
                 && mInputView != null) {
             Keyboard current = mInputView.getKeyboard();
             if (current == mSymbolsKeyboard || current == mSymbolsShiftedKeyboard) {
-                setLatinKeyboard(mQwertyKeyboard);
+                setKeyboard(mQwertyKeyboard);
             } else {
-                setLatinKeyboard(mSymbolsKeyboard);
+                setKeyboard(mSymbolsKeyboard);
                 mSymbolsKeyboard.setShifted(false);
             }
         } else {
@@ -579,11 +579,11 @@ public class Twi_IME extends InputMethodService
             mInputView.setShifted(mCapsLock || !mInputView.isShifted());
         } else if (currentKeyboard == mSymbolsKeyboard) {
             mSymbolsKeyboard.setShifted(true);
-            setLatinKeyboard(mSymbolsShiftedKeyboard);
+            setKeyboard(mSymbolsShiftedKeyboard);
             mSymbolsShiftedKeyboard.setShifted(true);
         } else if (currentKeyboard == mSymbolsShiftedKeyboard) {
             mSymbolsShiftedKeyboard.setShifted(false);
-            setLatinKeyboard(mSymbolsKeyboard);
+            setKeyboard(mSymbolsKeyboard);
             mSymbolsKeyboard.setShifted(false);
         }
     }
@@ -657,7 +657,7 @@ public class Twi_IME extends InputMethodService
             updateShiftKeyState(getCurrentInputEditorInfo());
         } else if (mComposing.length() > 0) {
             // If we were generating candidate suggestions for the current
-            // text, we would commit one of them here.  But for this sample,
+            // text, we would commit one of them here.  But for this,
             // we will just commit the current text.
             
         	
