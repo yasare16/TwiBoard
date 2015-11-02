@@ -58,6 +58,6 @@
         <Key android:codes="32" android:keyIcon="@drawable/space_key" android:keyWidth="29.5%p" android:isRepeatable="true"/>
         <Key android:codes="46" android:keyLabel="." />
         <Key android:keyOutputText=".." android:keyLabel=".." />       
-        <Key android:codes="-4" android:keyIcon="@drawable/enter_key_return" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
+        <Key android:codes="10" android:keyIcon="@drawable/enter_key_return" android:keyWidth="15%p" android:keyEdgeFlags="right"/>
     </Row>   
 </Keyboard>
