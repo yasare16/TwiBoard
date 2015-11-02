@@ -27,7 +27,6 @@
     
     <!-- Option to automatically correct word on hitting space -->
     <string name="auto_correction">Word suggestions</string>
-    <string name="word_separators"> . </string>
     
     <!-- Description for auto_correction -->
     <string name="auto_correction_summary">Automatically correct the previous word</string>
@@ -270,5 +269,7 @@
     
     <!-- Inform the user that a particular language has an available dictionary -->
     <string name="has_dictionary">Dictionary available</string>
+
+    <string name="separator"> "|" </string>
 
 </resources>
